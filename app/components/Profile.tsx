@@ -96,7 +96,7 @@ const Profile = () => {
                     </div>
 
                     <div className="mb-8">
-                        <h2 className="text-xl font-bold text-gray-800 mb-4">맞춤 제작 가능</h2>
+                        <h2 className="text-xl font-bold text-black mb-4">맞춤 제작 가능</h2>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                             {['식당 메뉴판', '온라인 쇼핑몰', '온라인매장 전환', '매장 소개'].map((service) => (
                                 <button
