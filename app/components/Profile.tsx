@@ -19,16 +19,15 @@ const Profile = () => {
         }, 5000);
 
         return () => clearInterval(timer);
-    }, []);
+    }, [images.length]);
 
-    const goToSlide = (index:number) => {
+    const goToSlide = (index: number) => {
         setCurrentIndex(index);
     };
 
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
             <div className="max-w-3xl w-full bg-white shadow-lg overflow-hidden">
-                {/* 이미지 슬라이더 부분은 동일 */}
                 <div className="h-64 bg-gray-800 relative overflow-hidden">
                     <div
                         className="flex transition-transform duration-500 ease-in-out h-full"
@@ -69,40 +68,40 @@ const Profile = () => {
                         <h2 className="text-xl font-bold text-gray-800 mb-4">가게 성장을 위한 맞춤 웹사이트</h2>
                         <div className="grid md:grid-cols-3 gap-4">
                             <button
-
+                                onClick={() => window.open(kakaoUrl, '_blank')}
                                 className="bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition-colors text-left"
                             >
-                                <Store className="w-8 h-8 text-black mb-2" />
-                                <h3 className="font-bold mb-2">온라인 매장</h3>
-                                <p className="text-gray-600">온라인 매장으로 매출 증대</p>
+                                <Store className="w-8 h-8 text-blue-600 mb-2" />
+                                <h3 className="font-bold mb-2 text-gray-900">온라인 매장</h3>
+                                <p className="text-gray-800">온라인 매장으로 매출 증대</p>
                             </button>
                             <button
-
+                                onClick={() => window.open(kakaoUrl, '_blank')}
                                 className="bg-green-50 p-4 rounded-lg hover:bg-green-100 transition-colors text-left"
                             >
-                                <Globe className="w-8 h-8 text-black mb-2" />
-                                <h3 className="font-bold mb-2">모바일 최적화</h3>
-                                <p className="text-gray-600">스마트폰에서도 완벽한 웹사이트</p>
+                                <Globe className="w-8 h-8 text-green-600 mb-2" />
+                                <h3 className="font-bold mb-2 text-gray-900">모바일 최적화</h3>
+                                <p className="text-gray-800">스마트폰에서도 완벽한 웹사이트</p>
                             </button>
                             <button
-
+                                onClick={() => window.open(kakaoUrl, '_blank')}
                                 className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors text-left"
                             >
-                                <CheckCircle2 className="w-8 h-8 text-black mb-2" />
-                                <h3 className="font-bold mb-2">간편 관리</h3>
-                                <p className="text-gray-600">비전문가도 쉽게 관리할 수 있는 시스템</p>
+                                <CheckCircle2 className="w-8 h-8 text-purple-600 mb-2" />
+                                <h3 className="font-bold mb-2 text-gray-900">간편 관리</h3>
+                                <p className="text-gray-800">비전문가도 쉽게 관리할 수 있는 시스템</p>
                             </button>
                         </div>
                     </div>
 
                     <div className="mb-8">
-                        <h2 className="text-xl font-bold text-black mb-4">맞춤 제작 가능</h2>
+                        <h2 className="text-xl font-bold text-gray-900 mb-4">맞춤 제작 가능</h2>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                             {['식당 메뉴판', '온라인 쇼핑몰', '온라인매장 전환', '매장 소개'].map((service) => (
                                 <button
                                     key={service}
-
-                                    className="bg-gray-100 p-3 rounded-lg hover:bg-gray-200 transition-colors"
+                                    onClick={() => window.open(kakaoUrl, '_blank')}
+                                    className="bg-gray-100 p-3 rounded-lg hover:bg-gray-200 transition-colors text-gray-900 font-medium"
                                 >
                                     {service}
                                 </button>
@@ -112,11 +111,11 @@ const Profile = () => {
 
                     <div className="border-t pt-6">
                         <div className="flex flex-wrap gap-6">
-                            <a href="tel:010-3055-4972" className="flex items-center text-gray-600 hover:text-blue-600">
+                            <a href="tel:010-3055-4972" className="flex items-center text-gray-700 hover:text-blue-600">
                                 <Phone className="w-5 h-5 mr-2" />
                                 010-3055-4972
                             </a>
-                            <a href="mailto:cocacola1585@gmail.com" className="flex items-center text-gray-600 hover:text-blue-600">
+                            <a href="mailto:cocacola1585@gmail.com" className="flex items-center text-gray-700 hover:text-blue-600">
                                 <Mail className="w-5 h-5 mr-2" />
                                 cocacola1585@gmail.com
                             </a>
@@ -124,7 +123,7 @@ const Profile = () => {
                                 href={kakaoUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center text-gray-600 hover:text-yellow-500"
+                                className="flex items-center text-gray-700 hover:text-yellow-500"
                             >
                                 <MessageCircle className="w-5 h-5 mr-2" />
                                 카카오톡 문의하기
