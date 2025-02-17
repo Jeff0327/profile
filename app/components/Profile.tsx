@@ -72,7 +72,7 @@ const Profile = () => {
 
                                 className="bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition-colors text-left"
                             >
-                                <Store className="w-8 h-8 text-blue-500 mb-2" />
+                                <Store className="w-8 h-8 text-black mb-2" />
                                 <h3 className="font-bold mb-2">온라인 매장</h3>
                                 <p className="text-gray-600">온라인 매장으로 매출 증대</p>
                             </button>
@@ -80,7 +80,7 @@ const Profile = () => {
 
                                 className="bg-green-50 p-4 rounded-lg hover:bg-green-100 transition-colors text-left"
                             >
-                                <Globe className="w-8 h-8 text-green-500 mb-2" />
+                                <Globe className="w-8 h-8 text-black mb-2" />
                                 <h3 className="font-bold mb-2">모바일 최적화</h3>
                                 <p className="text-gray-600">스마트폰에서도 완벽한 웹사이트</p>
                             </button>
@@ -88,7 +88,7 @@ const Profile = () => {
 
                                 className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors text-left"
                             >
-                                <CheckCircle2 className="w-8 h-8 text-purple-500 mb-2" />
+                                <CheckCircle2 className="w-8 h-8 text-black mb-2" />
                                 <h3 className="font-bold mb-2">간편 관리</h3>
                                 <p className="text-gray-600">비전문가도 쉽게 관리할 수 있는 시스템</p>
                             </button>
