@@ -20,7 +20,7 @@ interface PortfolioItem {
 // 메모이제이션된 포트폴리오 카드 컴포넌트
 const PortfolioCard = memo(({ item, onClick }: { item: PortfolioItem; onClick: (url: string) => void }) => {
     const [showIframe, setShowIframe] = useState(false);
-
+    const iframeRef = useRef<HTMLIFrameElement>(null);
     // 카드가 화면에 보일 때만 iframe 로드
     const cardRef = useRef<HTMLDivElement>(null);
 
@@ -46,7 +46,10 @@ const PortfolioCard = memo(({ item, onClick }: { item: PortfolioItem; onClick: (
             observer.disconnect();
         };
     }, []);
-
+    const preventIframeInteraction = (e: React.MouseEvent) => {
+        // 카드 클릭은 그대로 처리하되, iframe 내부 클릭은 무시
+        e.stopPropagation();
+    };
     return (
         <Card
             ref={cardRef}
@@ -55,13 +58,15 @@ const PortfolioCard = memo(({ item, onClick }: { item: PortfolioItem; onClick: (
         >
             <div className="relative h-48 w-full bg-gray-200">
                 {item.iframe && showIframe ? (
-                    <div className="w-full h-full overflow-hidden">
+                    <div className="w-full h-full overflow-hidden relative">
                         <iframe
+                            ref={iframeRef}
                             src={item.iframe}
                             className="w-full h-full border-0"
                             title={`${item.title} 미리보기`}
                             loading="lazy"
-                            sandbox="allow-scripts allow-same-origin"
+                            // 모든 상호작용 차단
+                            sandbox=""
                             scrolling="no"
                             style={{
                                 transform: 'scale(0.6)',
@@ -70,6 +75,12 @@ const PortfolioCard = memo(({ item, onClick }: { item: PortfolioItem; onClick: (
                                 height: '166.67%' /* 100% / 0.6 */
                             }}
                         ></iframe>
+                        {/* 투명 오버레이로 모든 마우스 이벤트 차단 */}
+                        <div
+                            className="absolute inset-0 z-10"
+                            onClick={preventIframeInteraction}
+                            aria-hidden="true"
+                        ></div>
                     </div>
                 ) : (
                     <>
@@ -112,10 +123,10 @@ function PortFolio() {
         {
             id: 1,
             title: '온라인 쇼핑몰',
-            description: '반응형 디자인의 현대적인 쇼핑몰 사이트',
+            description: '지역 온라인 쇼핑 통합 플렛폼',
             image: '/portfolio/sample_1.jpg',
-            iframe: 'https://seopseop.shop',
-            link: 'https://seopseop.shop',
+            iframe: 'https://v0-fashion-web-app-design.vercel.app/',
+            link: 'https://v0-fashion-web-app-design.vercel.app/',
             category: '웹사이트',
             icon: <ShoppingBag className="w-6 h-6 text-blue-600" />
         },
