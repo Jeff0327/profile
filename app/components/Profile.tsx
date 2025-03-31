@@ -6,6 +6,7 @@ import { FaArrowCircleRight } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import SampleUser from "@/app/components/SampleUser";
 import { IoIosArrowDown } from "react-icons/io";
+import PortFolio from "@/app/components/PortFolio";
 const Profile = () => {
     const images = [
         "/sample_1.jpg",
@@ -38,7 +39,7 @@ const Profile = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-            <div className="max-w-3xl w-full bg-white shadow-lg overflow-hidden">
+            <div className="max-w-3xl lg:max-w-full w-full bg-white shadow-lg overflow-hidden">
                 <button
                     className='fixed bottom-4 right-4 px-4 py-2 bg-blur-lg text-gray-800 rounded-full shadow-lg transition-colors z-10'
                     onClick={scrollToContact}
@@ -46,7 +47,7 @@ const Profile = () => {
                     <span className={'flex flex-row items-center gap-1'}>문의하기 <IoIosArrowDown  className={'w-4 h-4 lg:w-6 lg:h-6'}/></span>
 
                 </button>
-                <div className="h-64 bg-gray-800 relative overflow-hidden">
+                <div className="h-80 bg-gray-800 relative overflow-hidden">
                     <div
                         className="flex transition-transform duration-500 ease-in-out h-full"
                         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -128,6 +129,7 @@ const Profile = () => {
                             ))}
                         </div>
                     </div>
+                    <div className={'mb-8'}><PortFolio/></div>
                     <div className={'mb-8'}><SampleUser/></div>
                     <div className="border-t pt-6">
                         <div className="flex flex-wrap gap-6">
