@@ -1,8 +1,11 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import { Globe, Store, Phone, Mail, CheckCircle2, MessageCircle } from 'lucide-react';
+import { Globe, Store, Phone, Mail, CheckCircle2 } from 'lucide-react';
 import Image from "next/image";
-
+import { FaArrowCircleRight } from "react-icons/fa";
+import { RiKakaoTalkFill } from "react-icons/ri";
+import SampleUser from "@/app/components/SampleUser";
+import { IoIosArrowDown } from "react-icons/io";
 const Profile = () => {
     const images = [
         "/sample_1.jpg",
@@ -21,13 +24,28 @@ const Profile = () => {
         return () => clearInterval(timer);
     }, [images.length]);
 
-    const goToSlide = (index: number) => {
+    const goToSlide = (index:number) => {
         setCurrentIndex(index);
+    };
+
+    // 문의하기 버튼 클릭 시 연락처 영역으로 스크롤 이동
+    const scrollToContact = () => {
+        const contactSection = document.querySelector('.border-t');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
             <div className="max-w-3xl w-full bg-white shadow-lg overflow-hidden">
+                <button
+                    className='fixed bottom-4 right-4 px-4 py-2 bg-blur-lg text-gray-800 rounded-full shadow-lg transition-colors z-10'
+                    onClick={scrollToContact}
+                >
+                    <span className={'flex flex-row items-center gap-1'}>문의하기 <IoIosArrowDown  className={'w-4 h-4 lg:w-6 lg:h-6'}/></span>
+
+                </button>
                 <div className="h-64 bg-gray-800 relative overflow-hidden">
                     <div
                         className="flex transition-transform duration-500 ease-in-out h-full"
@@ -59,7 +77,7 @@ const Profile = () => {
 
                     <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-gray-900">
                         <h1 className="text-3xl font-bold text-white">김지섭</h1>
-                        <p className="text-xl text-gray-200">웹사이트 제작</p>
+                        <p className="text-xl text-gray-200">Web/App Developer</p>
                     </div>
                 </div>
 
@@ -71,23 +89,25 @@ const Profile = () => {
                                 onClick={() => window.open(kakaoUrl, '_blank')}
                                 className="bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition-colors text-left"
                             >
-                                <Store className="w-8 h-8 text-blue-600 mb-2" />
-                                <h3 className="font-bold mb-2 text-gray-900">온라인 매장</h3>
-                                <p className="text-gray-800">온라인 매장으로 매출 증대</p>
+                                <Store className="w-8 h-8 text-blue-600 mb-2"/>
+                                <h3 className="font-bold mb-2 text-gray-900">오프라인 매장</h3>
+                                <div className={'flex flex-row items-center text-gray-800 text-center gap-1'}>
+                                    오프라인 매장 <FaArrowCircleRight className={'relative w-4 h-4 lg:w-6 lg:h-6'}/> 온라인 매장 확장
+                                </div>
                             </button>
                             <button
                                 onClick={() => window.open(kakaoUrl, '_blank')}
                                 className="bg-green-50 p-4 rounded-lg hover:bg-green-100 transition-colors text-left"
                             >
-                                <Globe className="w-8 h-8 text-green-600 mb-2" />
-                                <h3 className="font-bold mb-2 text-gray-900">모바일 최적화</h3>
-                                <p className="text-gray-800">스마트폰에서도 완벽한 웹사이트</p>
+                                <Globe className="w-8 h-8 text-green-600 mb-2"/>
+                                <h3 className="font-bold mb-2 text-gray-900">반응형 디자인</h3>
+                                <p className="text-gray-800">모든 환경에서 반응형 디자인으로 모바일, PC에서도 최적화</p>
                             </button>
                             <button
                                 onClick={() => window.open(kakaoUrl, '_blank')}
                                 className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-colors text-left"
                             >
-                                <CheckCircle2 className="w-8 h-8 text-purple-600 mb-2" />
+                                <CheckCircle2 className="w-8 h-8 text-purple-600 mb-2"/>
                                 <h3 className="font-bold mb-2 text-gray-900">간편 관리</h3>
                                 <p className="text-gray-800">비전문가도 쉽게 관리할 수 있는 시스템</p>
                             </button>
@@ -97,7 +117,7 @@ const Profile = () => {
                     <div className="mb-8">
                         <h2 className="text-xl font-bold text-gray-900 mb-4">맞춤 제작 가능</h2>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                            {['식당 메뉴판', '온라인 쇼핑몰', '온라인매장 전환', '매장 소개'].map((service) => (
+                            {['온라인 명함', '온라인 쇼핑몰', '온라인매장 확장', '회사 소개'].map((service) => (
                                 <button
                                     key={service}
                                     onClick={() => window.open(kakaoUrl, '_blank')}
@@ -108,15 +128,16 @@ const Profile = () => {
                             ))}
                         </div>
                     </div>
-
+                    <div className={'mb-8'}><SampleUser/></div>
                     <div className="border-t pt-6">
                         <div className="flex flex-wrap gap-6">
                             <a href="tel:010-3055-4972" className="flex items-center text-gray-700 hover:text-blue-600">
-                                <Phone className="w-5 h-5 mr-2" />
+                                <Phone className="w-5 h-5 mr-2"/>
                                 010-3055-4972
                             </a>
-                            <a href="mailto:cocacola1585@gmail.com" className="flex items-center text-gray-700 hover:text-blue-600">
-                                <Mail className="w-5 h-5 mr-2" />
+                            <a href="mailto:cocacola1585@gmail.com"
+                               className="flex items-center text-gray-700 hover:text-blue-600">
+                                <Mail className="w-5 h-5 mr-2"/>
                                 cocacola1585@gmail.com
                             </a>
                             <a
@@ -125,7 +146,7 @@ const Profile = () => {
                                 rel="noopener noreferrer"
                                 className="flex items-center text-gray-700 hover:text-yellow-500"
                             >
-                                <MessageCircle className="w-5 h-5 mr-2" />
+                                <RiKakaoTalkFill className="w-5 h-5 mr-2"/>
                                 카카오톡 문의하기
                             </a>
                         </div>
