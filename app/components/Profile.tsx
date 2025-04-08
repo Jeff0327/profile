@@ -5,13 +5,12 @@ import Image from "next/image";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import SampleUser from "@/app/components/SampleUser";
-import { IoIosArrowDown } from "react-icons/io";
 import PortFolio from "@/app/components/PortFolio";
 const Profile = () => {
     const images = [
-        "/sample_1.jpg",
-        "/sample_2.jpg",
-        "/sample_3.jpg"
+        "/mainImg_1.jpg",
+        "/mainImg_2.jpg",
+        "/mainImg_3.jpg",
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -29,25 +28,10 @@ const Profile = () => {
         setCurrentIndex(index);
     };
 
-    // 문의하기 버튼 클릭 시 연락처 영역으로 스크롤 이동
-    const scrollToContact = () => {
-        const contactSection = document.querySelector('.border-t');
-        if (contactSection) {
-            contactSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
             <div className="max-w-3xl lg:max-w-full w-full bg-white shadow-lg overflow-hidden">
-                <button
-                    className='fixed bottom-4 right-4 px-4 py-2 bg-blur-lg text-gray-800 rounded-full shadow-lg transition-colors z-10'
-                    onClick={scrollToContact}
-                >
-                    <span className={'flex flex-row items-center gap-1'}>문의하기 <IoIosArrowDown  className={'w-4 h-4 lg:w-6 lg:h-6'}/></span>
-
-                </button>
-                <div className="h-80 bg-gray-800 relative overflow-hidden">
+                <div className="h-[300px] lg:h-[600px] bg-gray-800 relative overflow-hidden">
                     <div
                         className="flex transition-transform duration-500 ease-in-out h-full"
                         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -56,10 +40,11 @@ const Profile = () => {
                             <Image
                                 key={index}
                                 src={img}
-                                width={200}
-                                height={200}
+                                width={1200}
+                                height={1200}
                                 alt={`포트폴리오 ${index + 1}`}
                                 className="w-full h-full object-cover opacity-80 flex-shrink-0"
+                                priority
                             />
                         ))}
                     </div>
@@ -77,13 +62,13 @@ const Profile = () => {
                     </div>
 
                     <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-gray-900">
-                        <h1 className="text-3xl font-bold text-white">김지섭</h1>
-                        <p className="text-xl text-gray-200">Web/App Developer</p>
+                        <h1 className="text-xl md:text-3xl font-bold text-white">김지섭</h1>
+                        <p className="text-sm md:text-xl text-gray-200">Web/App Developer</p>
                     </div>
                 </div>
 
                 <div className="p-6">
-                    <div className="mb-8">
+                    <div className="my-12 lg:my-16">
                         <h2 className="text-xl font-bold text-gray-800 mb-4">가게 성장을 위한 맞춤 웹사이트</h2>
                         <div className="grid md:grid-cols-3 gap-4">
                             <button
@@ -115,7 +100,7 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <div className="mb-8">
+                    <div className="my-12 lg:my-16">
                         <h2 className="text-xl font-bold text-gray-900 mb-4">맞춤 제작 가능</h2>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                             {['온라인 명함', '온라인 쇼핑몰', '온라인매장 확장', '회사 소개'].map((service) => (
@@ -129,8 +114,8 @@ const Profile = () => {
                             ))}
                         </div>
                     </div>
-                    <div className={'mb-8'}><PortFolio/></div>
-                    <div className={'mb-8'}><SampleUser/></div>
+                    <div className={'my-12 lg:my-16'}><PortFolio/></div>
+                    <div className={'my-12 lg:my-16'}><SampleUser/></div>
                     <div className="border-t pt-6">
                         <div className="flex flex-wrap gap-6">
                             <a href="tel:010-3055-4972" className="flex items-center text-gray-700 hover:text-blue-600">

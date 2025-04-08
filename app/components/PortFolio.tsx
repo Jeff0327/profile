@@ -133,41 +133,41 @@ function PortFolio() {
         {
             id: 2,
             title: '기업 홈페이지',
-            description: '심플하면서도 전문적인 기업 소개 웹사이트',
+            description: '심플하면서도 전문적인 의류 플렛폼 소개 웹사이트',
             image: '/portfolio/sample_1.jpg',
-            iframe: 'https://seopseop.shop',
-            link: 'https://seopseop.shop',
+            iframe: 'https://dreso.store',
+            link: 'https://dreso.store',
             category: '웹사이트',
             icon: <Globe className="w-6 h-6 text-green-600" />
         },
         {
             id: 3,
-            title: '블로그 템플릿',
-            description: 'SEO에 최적화된 블로그 사이트',
+            title: '회사 소개 페이지',
+            description: '전문적인 기술 회사 소개 웹사이트',
             image: '/portfolio/sample_1.jpg',
-            iframe: 'https://seopseop.shop',
-            link: 'https://seopseop.shop',
+            iframe: 'https://www.comjeff.site/main',
+            link: 'https://www.comjeff.site/main',
             category: '웹사이트',
             icon: <FileText className="w-6 h-6 text-purple-600" />
         },
         {
             id: 4,
-            title: '예약 시스템',
-            description: '식당 및 서비스 업체를 위한 온라인 예약 시스템',
+            title: '',
+            description: '',
             image: '/portfolio/sample_1.jpg',
-            iframe: 'https://seopseop.shop',
-            link: 'https://seopseop.shop',
-            category: '웹 애플리케이션',
+            iframe: '',
+            link: '/',
+            category: '',
             icon: <Code className="w-6 h-6 text-red-600" />
         },
         {
             id: 5,
-            title: '포트폴리오 사이트',
-            description: '개인 포트폴리오를 위한 깔끔한 디자인의 웹사이트',
+            title: '',
+            description: '',
             image: '/portfolio/sample_1.jpg',
-            iframe: 'https://seopseop.shop',
-            link: 'https://seopseop.shop',
-            category: '웹사이트',
+            iframe: '',
+            link: '/',
+            category: '',
             icon: <Globe className="w-6 h-6 text-indigo-600" />
         }
     ];
@@ -176,6 +176,20 @@ function PortFolio() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const carouselRef = useRef<HTMLDivElement>(null);
     const [isMobile, setIsMobile] = useState(false);
+
+    // 다음 슬라이드로 이동 - useCallback으로 메모이제이션
+    const nextSlide = useCallback(() => {
+        setCurrentIndex((prevIndex) =>
+            prevIndex === portfolioItems.length - 1 ? 0 : prevIndex + 1
+        );
+    }, [portfolioItems.length]);
+
+    // 이전 슬라이드로 이동 - useCallback으로 메모이제이션
+    const prevSlide = useCallback(() => {
+        setCurrentIndex((prevIndex) =>
+            prevIndex === 0 ? portfolioItems.length - 1 : prevIndex - 1
+        );
+    }, [portfolioItems.length]);
 
     // 반응형 체크 - 디바운스 추가
     useEffect(() => {
@@ -210,21 +224,7 @@ function PortFolio() {
         }, 5000);
 
         return () => clearInterval(interval);
-    }, [isMobile, currentIndex]);
-
-    // 다음 슬라이드로 이동 - useCallback으로 메모이제이션
-    const nextSlide = useCallback(() => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex === portfolioItems.length - 1 ? 0 : prevIndex + 1
-        );
-    }, [portfolioItems.length]);
-
-    // 이전 슬라이드로 이동 - useCallback으로 메모이제이션
-    const prevSlide = useCallback(() => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex === 0 ? portfolioItems.length - 1 : prevIndex - 1
-        );
-    }, [portfolioItems.length]);
+    }, [isMobile, nextSlide]); // nextSlide 의존성 추가
 
     // 카드 클릭 시 링크로 이동 함수 - useCallback으로 메모이제이션
     const navigateToProject = useCallback((url: string) => {
