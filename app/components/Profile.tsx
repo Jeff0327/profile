@@ -122,10 +122,10 @@ const Profile = () => {
                                 <Phone className="w-5 h-5 mr-2"/>
                                 010-3055-4972
                             </a>
-                            <a href="mailto:cocacola1585@gmail.com"
+                            <a href="mailto:cocacola158500@gmail.com"
                                className="flex items-center text-gray-700 hover:text-blue-600">
                                 <Mail className="w-5 h-5 mr-2"/>
-                                cocacola1585@gmail.com
+                                cocacola158500@gmail.com
                             </a>
                             <a
                                 href={kakaoUrl}
