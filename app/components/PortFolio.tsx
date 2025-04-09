@@ -145,8 +145,8 @@ function PortFolio() {
             title: '회사 소개 페이지',
             description: '전문적인 기술 회사 소개 웹사이트',
             image: '/portfolio/sample_1.jpg',
-            iframe: 'https://www.comjeff.site/main',
-            link: 'https://www.comjeff.site/main',
+            iframe: 'https://www.comjeff.site/introduce',
+            link: 'https://www.comjeff.site/introduce',
             category: '웹사이트',
             icon: <FileText className="w-6 h-6 text-purple-600" />
         },
