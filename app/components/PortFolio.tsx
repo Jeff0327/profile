@@ -152,12 +152,12 @@ function PortFolio() {
         },
         {
             id: 4,
-            title: '',
-            description: '',
+            title: 'QR 코드 생성기',
+            description: '무료 QR코드 생성 웹사이트',
             image: '/portfolio/sample_1.jpg',
-            iframe: '',
-            link: '/',
-            category: '',
+            iframe: 'https://www.qrmake.kr',
+            link: 'https://www.qrmake.kr',
+            category: '웹사이트',
             icon: <Code className="w-6 h-6 text-red-600" />
         },
         {
