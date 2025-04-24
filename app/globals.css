@@ -115,7 +115,26 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+    /* 모바일에서 더블클릭 확대 방지 */
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* 모바일에서 확대 방지를 위한 추가 설정 */
+  html {
+    touch-action: manipulation;
+    -ms-content-zooming: none;
+  }
+
+  /* 터치 이벤트에 반응하는 요소에 대한 설정 */
+  button, a, [role="button"] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
   }
 }

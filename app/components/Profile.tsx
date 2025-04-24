@@ -1,11 +1,13 @@
 'use client'
-import React, { useState, useEffect } from 'react';
-import { Globe, Store, Phone, Mail, CheckCircle2 } from 'lucide-react';
+import React, {useState, useEffect} from 'react';
+import {Globe, Store, Phone, Mail, CheckCircle2} from 'lucide-react';
 import Image from "next/image";
-import { FaArrowCircleRight } from "react-icons/fa";
-import { RiKakaoTalkFill } from "react-icons/ri";
+import {FaArrowCircleRight} from "react-icons/fa";
+import {RiKakaoTalkFill} from "react-icons/ri";
 import SampleUser from "@/app/components/SampleUser";
 import PortFolio from "@/app/components/PortFolio";
+import Link from "next/link";
+
 const Profile = () => {
     const images = [
         "/mainImg_1.jpg",
@@ -24,7 +26,7 @@ const Profile = () => {
         return () => clearInterval(timer);
     }, [images.length]);
 
-    const goToSlide = (index:number) => {
+    const goToSlide = (index: number) => {
         setCurrentIndex(index);
     };
 
@@ -34,7 +36,7 @@ const Profile = () => {
                 <div className="h-[300px] lg:h-[600px] bg-gray-800 relative overflow-hidden">
                     <div
                         className="flex transition-transform duration-500 ease-in-out h-full"
-                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                        style={{transform: `translateX(-${currentIndex * 100}%)`}}
                     >
                         {images.map((img, index) => (
                             <Image
@@ -47,8 +49,23 @@ const Profile = () => {
                                 priority
                             />
                         ))}
-                    </div>
 
+                    </div>
+                    {/* 상담 섹션 - 모바일 대응 및 자연스러운 디자인 */}
+                    <Link href="tel:010-3055-4972" className="absolute z-[10] right-2 sm:right-6 md:right-8 lg:right-12 bottom-2 sm:bottom-16 md:bottom-14 lg:bottom-12">
+                        <div className="flex flex-col justify-center items-center rounded-lg border backdrop-blur-sm bg-black/30
+                                      px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-12 lg:py-6 gap-2 md:gap-3 lg:gap-4
+                                      transition-all duration-300 hover:bg-black/40">
+                            <h1 className="text-xs sm:text-base md:text-lg lg:text-2xl text-white font-medium">
+                                지금바로 상담받아보세요
+                            </h1>
+                            <button
+                                className="rounded-full px-4 sm:px-6 md:px-8 lg:px-10 py-1 md:py-1.5 bg-white hover:bg-gray-100
+                                         transition-colors duration-200 shadow-md">
+                                <h1 className="text-black text-xs sm:text-sm md:text-base lg:text-lg font-medium">연락하기</h1>
+                            </button>
+                        </div>
+                    </Link>
                     <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex gap-2">
                         {images.map((_, index) => (
                             <button

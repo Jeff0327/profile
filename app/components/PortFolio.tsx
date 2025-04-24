@@ -46,10 +46,9 @@ const PortfolioCard = memo(({ item, onClick }: { item: PortfolioItem; onClick: (
             observer.disconnect();
         };
     }, []);
-    const preventIframeInteraction = (e: React.MouseEvent) => {
-        // 카드 클릭은 그대로 처리하되, iframe 내부 클릭은 무시
-        e.stopPropagation();
-    };
+
+    // 카드 전체를 클릭 가능하게 하기 위해 preventIframeInteraction 함수 제거
+
     return (
         <Card
             ref={cardRef}
@@ -62,10 +61,9 @@ const PortfolioCard = memo(({ item, onClick }: { item: PortfolioItem; onClick: (
                         <iframe
                             ref={iframeRef}
                             src={item.iframe}
-                            className="w-full h-full border-0"
+                            className="w-full h-full border-0 pointer-events-none" // 포인터 이벤트를 비활성화
                             title={`${item.title} 미리보기`}
                             loading="lazy"
-                            // 모든 상호작용 차단
                             sandbox=""
                             scrolling="no"
                             style={{
@@ -75,10 +73,9 @@ const PortfolioCard = memo(({ item, onClick }: { item: PortfolioItem; onClick: (
                                 height: '166.67%' /* 100% / 0.6 */
                             }}
                         ></iframe>
-                        {/* 투명 오버레이로 모든 마우스 이벤트 차단 */}
+                        {/* 투명 오버레이를 제거하고, 대신 클릭 이벤트를 전파하도록 수정 */}
                         <div
-                            className="absolute inset-0 z-10"
-                            onClick={preventIframeInteraction}
+                            className="absolute inset-0 z-10 cursor-pointer"
                             aria-hidden="true"
                         ></div>
                     </div>
@@ -122,11 +119,11 @@ function PortFolio() {
     const portfolioItems: PortfolioItem[] = [
         {
             id: 1,
-            title: '온라인 쇼핑몰',
-            description: '지역 온라인 쇼핑 통합 플렛폼',
+            title: '외주 프로젝트',
+            description: '게임 유틸리티 판매 플렛폼',
             image: '/portfolio/sample_1.jpg',
-            iframe: 'https://v0-fashion-web-app-design.vercel.app/',
-            link: 'https://v0-fashion-web-app-design.vercel.app/',
+            iframe: 'https://kmong1.vercel.app/home',
+            link: 'https://kmong1.vercel.app/home',
             category: '웹사이트',
             icon: <ShoppingBag className="w-6 h-6 text-blue-600" />
         },
@@ -142,11 +139,11 @@ function PortFolio() {
         },
         {
             id: 3,
-            title: '회사 소개 페이지',
-            description: '전문적인 기술 회사 소개 웹사이트',
+            title: '명함 외주 프로젝트',
+            description: '온라인 명함 제작',
             image: '/portfolio/sample_1.jpg',
-            iframe: 'https://www.comjeff.site/introduce',
-            link: 'https://www.comjeff.site/introduce',
+            iframe: 'https://www.sjgcorp.store/',
+            link: 'https://www.sjgcorp.store/',
             category: '웹사이트',
             icon: <FileText className="w-6 h-6 text-purple-600" />
         },
@@ -162,12 +159,12 @@ function PortFolio() {
         },
         {
             id: 5,
-            title: '',
-            description: '',
+            title: '숙소 예약 플렛폼',
+            description: '숙소 예약 플렛폼 포트폴리오',
             image: '/portfolio/sample_1.jpg',
-            iframe: '',
-            link: '/',
-            category: '',
+            iframe: 'https://www.traveljeff.site/main',
+            link: 'https://www.traveljeff.site/main',
+            category: '웹사이트',
             icon: <Globe className="w-6 h-6 text-indigo-600" />
         }
     ];
@@ -256,15 +253,21 @@ function PortFolio() {
 
                     {/* 네비게이션 버튼 */}
                     <button
-                        className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md"
-                        onClick={prevSlide}
+                        className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md z-20"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            prevSlide();
+                        }}
                         aria-label="이전 포트폴리오"
                     >
                         <ChevronLeft className="w-5 h-5" />
                     </button>
                     <button
-                        className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md"
-                        onClick={nextSlide}
+                        className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md z-20"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            nextSlide();
+                        }}
                         aria-label="다음 포트폴리오"
                     >
                         <ChevronRight className="w-5 h-5" />
@@ -278,7 +281,10 @@ function PortFolio() {
                                 className={`w-2 h-2 rounded-full transition-all ${
                                     currentIndex === index ? 'bg-blue-600 scale-125' : 'bg-gray-300'
                                 }`}
-                                onClick={() => setCurrentIndex(index)}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setCurrentIndex(index);
+                                }}
                                 aria-label={`포트폴리오 ${index + 1}번으로 이동`}
                             />
                         ))}
