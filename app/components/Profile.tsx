@@ -9,7 +9,7 @@ import CustomSite from "@/components/CustomSite";
 import Categories from "@/components/Categories";
 import Information from "@/components/Information";
 
-const Profile = () => {
+export default function Profile() {
 
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -66,5 +66,3 @@ const Profile = () => {
         </div>
     );
 };
-
-export default Profile;

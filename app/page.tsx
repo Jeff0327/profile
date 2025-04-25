@@ -1,9 +1,10 @@
 import Profile from "@/app/components/Profile";
+import {Suspense} from "react";
 
-export default function Home() {
+export default async function Home() {
   return (
-      <main>
+      <Suspense fallback={null}>
           <Profile/>
-      </main>
+      </Suspense>
   );
 }
