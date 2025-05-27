@@ -119,11 +119,11 @@ function PortFolio() {
     const portfolioItems: PortfolioItem[] = [
         {
             id: 1,
-            title: '외주 프로젝트',
-            description: '게임 유틸리티 판매 플렛폼',
-            image: '/portfolio/sample_1.jpg',
-            iframe: 'https://kmong1.vercel.app/home',
-            link: 'https://kmong1.vercel.app/home',
+            title: '기업 홈페이지',
+            description: '건설기계 수리/부품판매 회사소개페이지',
+            image: '/portfolio/ds.png',
+            iframe: 'https://www.deasung.kr/business/repair',
+            link: 'https://deasung.kr/home',
             category: '웹사이트',
             icon: <ShoppingBag className="w-6 h-6 text-blue-600" />
         },
