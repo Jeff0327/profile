@@ -139,12 +139,12 @@ function PortFolio() {
         },
         {
             id: 3,
-            title: '명함 외주 프로젝트',
-            description: '온라인 명함 제작',
+            title: '모자 쇼핑몰',
+            description: '모자 독립형 쇼핑몰',
             image: '/portfolio/sample_1.jpg',
-            iframe: 'https://www.sjgcorp.store/',
-            link: 'https://www.sjgcorp.store/',
-            category: '웹사이트',
+            iframe: 'https://snapcap-green.vercel.app/main',
+            link: 'https://snapcap-green.vercel.app/main',
+            category: '쇼핑몰',
             icon: <FileText className="w-6 h-6 text-purple-600" />
         },
         {
@@ -233,7 +233,6 @@ function PortFolio() {
             <div className="flex justify-between items-center">
                 <h2 className="text-xl font-bold text-gray-900">포트폴리오</h2>
             </div>
-
             {/* 모바일용 캐러셀 */}
             {isMobile && (
                 <div className="relative">
