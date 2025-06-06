@@ -233,6 +233,7 @@ function PortFolio() {
             <div className="flex justify-between items-center">
                 <h2 className="text-xl font-bold text-gray-900">포트폴리오</h2>
             </div>
+
             {/* 모바일용 캐러셀 */}
             {isMobile && (
                 <div className="relative">
