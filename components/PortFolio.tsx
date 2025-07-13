@@ -142,8 +142,8 @@ function PortFolio() {
             title: '모자 쇼핑몰',
             description: '모자 독립형 쇼핑몰',
             image: '/portfolio/sample_1.jpg',
-            iframe: 'https://snapcap-green.vercel.app/main',
-            link: 'https://snapcap-green.vercel.app/main',
+            iframe: 'https://xn--k30bx25adxi.kr/main',
+            link: 'https://xn--k30bx25adxi.kr/main',
             category: '쇼핑몰',
             icon: <FileText className="w-6 h-6 text-purple-600" />
         },
@@ -159,11 +159,11 @@ function PortFolio() {
         },
         {
             id: 5,
-            title: '숙소 예약 플렛폼',
-            description: '숙소 예약 플렛폼 포트폴리오',
-            image: '/portfolio/sample_1.jpg',
-            iframe: 'https://www.traveljeff.site/main',
-            link: 'https://www.traveljeff.site/main',
+            title: '외주 홍보',
+            description: '외주업체 홍보 플렛폼',
+            image: '/portfolio/showimg.png',
+            iframe: 'https://https://www.sodohall.site',
+            link: 'https://www.sodohall.site',
             category: '웹사이트',
             icon: <Globe className="w-6 h-6 text-indigo-600" />
         }
